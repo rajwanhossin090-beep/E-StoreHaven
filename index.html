@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Store Haven | India's Best Online Shopping Deals</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Top Announcement Bar -->
+  <div class="announcement-bar">
+    <span>🚚 Free Delivery on First Order | 🏷️ Up to 80% Off Wholesale Prices</span>
+  </div>
+
+  <!-- Header -->
+  <header class="main-header">
+    <div class="header-container">
+      <a href="#" class="brand-logo" id="logoBtn">
+        <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 01-8 0"></path></svg>
+        <span>E-Store <strong>Haven</strong></span>
+      </a>
+
+      <div class="search-box">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="searchInput" placeholder="Search Saree, Kurti, Headphones, Home Decor...">
+        <button id="searchBtn" aria-label="Search">Search</button>
+      </div>
+
+      <div class="header-actions">
+        <button class="action-btn" id="userAuthBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          <span id="userAccountText">Profile</span>
+        </button>
+        <button class="action-btn cart-btn" id="cartOpenBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 01-8 0"></path></svg>
+          <span>Cart</span>
+          <span class="badge" id="cartBadge">0</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Category Bar -->
+    <nav class="category-nav">
+      <div class="category-scroll" id="categoryContainer">
+        <button class="cat-chip active" data-category="all">All Items</button>
+        <button class="cat-chip" data-category="fashion">Ethnic & Fashion</button>
+        <button class="cat-chip" data-category="electronics">Electronics</button>
+        <button class="cat-chip" data-category="home">Home & Kitchen</button>
+        <button class="cat-chip" data-category="footwear">Footwear</button>
+        <button class="cat-chip" data-category="beauty">Beauty & Care</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="app-viewport">
+    <!-- Hero Banner -->
+    <section class="hero-section">
+      <div class="hero-banner">
+        <div class="hero-content">
+          <span class="hero-tag">🔥 Mega Reseller Festival</span>
+          <h2>Lowest Prices, Best Quality Direct from Factory</h2>
+          <p>Cash on Delivery | Easy Returns | Zero Investment</p>
+          <a href="#productCatalog" class="cta-btn">Shop Now</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filters & Sort Strip -->
+    <section class="filter-strip" id="productCatalog">
+      <div class="filter-header">
+        <h3 id="catalogTitle">Top Deals For You</h3>
+        <span class="item-count" id="productCount">Showing products</span>
+      </div>
+      <div class="filter-controls">
+        <select id="sortSelect" aria-label="Sort products">
+          <option value="popular">Popularity</option>
+          <option value="low-high">Price: Low to High</option>
+          <option value="high-low">Price: High to Low</option>
+          <option value="rating">Highest Rated</option>
+        </select>
+        <select id="priceFilter" aria-label="Filter by price">
+          <option value="all">All Prices</option>
+          <option value="under499">Under ₹499</option>
+          <option value="500-999">₹500 - ₹999</option>
+          <option value="above1000">Above ₹1000</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- Product Grid -->
+    <section class="products-container">
+      <div class="product-grid" id="productGrid">
+        <!-- Dynamic Cards Inserted via JS -->
+      </div>
+      <div class="no-products hidden" id="noProductsMsg">
+        <p>🔍 No products match your search/filter criteria.</p>
+        <button class="secondary-btn" id="resetFiltersBtn">Reset Filters</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Mobile Bottom Navigation Bar -->
+  <nav class="mobile-bottom-nav">
+    <button class="bottom-nav-item active" id="bNavHome">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+      <span>Home</span>
+    </button>
+    <button class="bottom-nav-item" id="bNavCategories">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+      <span>Categories</span>
+    </button>
+    <button class="bottom-nav-item" id="bNavCart">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 01-8 0"></path></svg>
+      <span class="badge" id="bottomCartBadge">0</span>
+      <span>Cart</span>
+    </button>
+    <button class="bottom-nav-item" id="bNavUser">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+      <span>Account</span>
+    </button>
+  </nav>
+
+  <!-- Product Quick View Modal -->
+  <div class="modal-overlay hidden" id="productModalOverlay">
+    <div class="modal-content product-modal">
+      <button class="close-modal-btn" id="closeProductModal">&times;</button>
+      <div class="product-modal-body" id="productModalBody">
+        <!-- Dynamic Product Detail HTML -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart Slide-Over Drawer -->
+  <div class="drawer-overlay hidden" id="cartOverlay">
+    <div class="cart-drawer">
+      <div class="drawer-header">
+        <h3>My Cart (<span id="cartItemCount">0</span>)</h3>
+        <button class="close-modal-btn" id="closeCartBtn">&times;</button>
+      </div>
+      <div class="drawer-body" id="cartItemsContainer">
+        <!-- Dynamic Cart Items -->
+      </div>
+      <div class="drawer-footer" id="cartFooter">
+        <div class="cart-summary-line">
+          <span>Subtotal:</span>
+          <strong id="cartSubtotal">₹0</strong>
+        </div>
+        <div class="cart-summary-line free-shipping">
+          <span>Delivery Charge:</span>
+          <span class="free-badge">FREE</span>
+        </div>
+        <div class="cart-total-line">
+          <span>Total Amount:</span>
+          <strong id="cartTotal">₹0</strong>
+        </div>
+        <button class="checkout-btn" id="startCheckoutBtn">Proceed to Checkout ➔</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Auth Modal (Login / Register) -->
+  <div class="modal-overlay hidden" id="authModalOverlay">
+    <div class="modal-content auth-modal">
+      <button class="close-modal-btn" id="closeAuthModal">&times;</button>
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="tabLoginBtn">Login</button>
+        <button class="auth-tab" id="tabRegisterBtn">Register</button>
+      </div>
+
+      <!-- Login Form -->
+      <form class="auth-form" id="loginForm">
+        <h3>Welcome Back to E-Store Haven</h3>
+        <p class="auth-sub">Enter your details to track orders & earn rewards</p>
+        <div class="form-group">
+          <label for="loginEmail">Email / Phone Number</label>
+          <input type="text" id="loginEmail" placeholder="e.g. 9876543210 or user@mail.com" required>
+          <span class="error-msg" id="loginEmailErr"></span>
+        </div>
+        <div class="form-group">
+          <label for="loginPass">Password</label>
+          <input type="password" id="loginPass" placeholder="Enter password" required>
+          <span class="error-msg" id="loginPassErr"></span>
+        </div>
+        <button type="submit" class="submit-btn">Login Securely</button>
+        <p class="switch-auth-text">New user? <a href="#" id="linkToRegister">Create an Account</a></p>
+      </form>
+
+      <!-- Register Form -->
+      <form class="auth-form hidden" id="registerForm">
+        <h3>Create Your Account</h3>
+        <p class="auth-sub">Start purchasing at wholesale prices</p>
+        <div class="form-group">
+          <label for="regName">Full Name</label>
+          <input type="text" id="regName" placeholder="e.g. Rahul Sharma" required>
+          <span class="error-msg" id="regNameErr"></span>
+        </div>
+        <div class="form-group">
+          <label for="regEmail">Email Address</label>
+          <input type="email" id="regEmail" placeholder="e.g. rahul@example.com" required>
+          <span class="error-msg" id="regEmailErr"></span>
+        </div>
+        <div class="form-group">
+          <label for="regPhone">Mobile Number (10 digits)</label>
+          <input type="tel" id="regPhone" placeholder="e.g. 9876543210" pattern="[0-9]{10}" required>
+          <span class="error-msg" id="regPhoneErr"></span>
+        </div>
+        <div class="form-group">
+          <label for="regPass">Password (min 6 chars)</label>
+          <input type="password" id="regPass" placeholder="Create password" required minlength="6">
+          <span class="error-msg" id="regPassErr"></span>
+        </div>
+        <button type="submit" class="submit-btn">Register Account</button>
+        <p class="switch-auth-text">Already registered? <a href="#" id="linkToLogin">Login Here</a></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Checkout & Payment Gateway Modal -->
+  <div class="modal-overlay hidden" id="checkoutModalOverlay">
+    <div class="modal-content checkout-modal">
+      <button class="close-modal-btn" id="closeCheckoutModal">&times;</button>
+      <div class="checkout-header">
+        <h3>Checkout & Secure Payment</h3>
+        <div class="step-indicator">
+          <span class="step active">1. Address</span>
+          <span class="step active">2. Payment</span>
+          <span class="step">3. Confirm</span>
+        </div>
+      </div>
+
+      <div class="checkout-body">
+        <!-- Address Form -->
+        <form id="checkoutForm">
+          <h4>Delivery Address</h4>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="shipName">Full Name</label>
+              <input type="text" id="shipName" required placeholder="Recipient name">
+            </div>
+            <div class="form-group">
+              <label for="shipPhone">Phone</label>
+              <input type="tel" id="shipPhone" required placeholder="10-digit phone">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="shipAddress">Flat, House No, Street / Area</label>
+            <input type="text" id="shipAddress" required placeholder="House 123, Sector 15">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="shipPincode">Pincode</label>
+              <input type="text" id="shipPincode" maxlength="6" pattern="[0-9]{6}" required placeholder="110001">
+            </div>
+            <div class="form-group">
+              <label for="shipCity">City / State</label>
+              <input type="text" id="shipCity" required placeholder="New Delhi">
+            </div>
+          </div>
+
+          <h4>Select Payment Method</h4>
+          <div class="payment-options">
+            <label class="pay-option active-option">
+              <input type="radio" name="payMethod" value="upi" checked>
+              <div class="pay-info">
+                <strong>UPI (GPay / PhonePe / Paytm / BHIM)</strong>
+                <span>Instant confirmation, 0 charges</span>
+              </div>
+            </label>
+            <label class="pay-option">
+              <input type="radio" name="payMethod" value="cod">
+              <div class="pay-info">
+                <strong>Cash on Delivery (COD)</strong>
+                <span>Pay cash when product arrives at doorstep</span>
+              </div>
+            </label>
+            <label class="pay-option">
+              <input type="radio" name="payMethod" value="card">
+              <div class="pay-info">
+                <strong>Credit / Debit Card</strong>
+                <span>Visa, Mastercard, RuPay, Maestro</span>
+              </div>
+            </label>
+          </div>
+
+          <div class="pay-details-box" id="payDetailsBox">
+            <div id="upiBox" class="pay-subbox">
+              <label for="upiId">Enter UPI ID</label>
+              <input type="text" id="upiId" placeholder="username@upi or 9876543210@paytm">
+            </div>
+            <div id="cardBox" class="pay-subbox hidden">
+              <input type="text" placeholder="Card Number (16 digits)" maxlength="16">
+              <div class="form-row mt-8">
+                <input type="text" placeholder="MM/YY" maxlength="5">
+                <input type="password" placeholder="CVV" maxlength="3">
+              </div>
+            </div>
+            <div id="codBox" class="pay-subbox hidden">
+              <p class="cod-note">✓ Pay <strong>₹<span class="pay-amount-span">0</span></strong> in cash upon delivery.</p>
+            </div>
+          </div>
+
+          <div class="order-final-summary">
+            <span>Payable Amount:</span>
+            <strong class="total-amount-tag">₹<span class="pay-amount-span">0</span></strong>
+          </div>
+
+          <button type="submit" class="submit-btn pay-now-btn" id="payNowBtn">
+            🔒 Place Order Securely
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Order Success Screen -->
+  <div class="modal-overlay hidden" id="successModalOverlay">
+    <div class="modal-content success-modal">
+      <div class="success-icon-wrap">
+        <svg class="checkmark-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <h2>Order Placed Successfully! 🎉</h2>
+      <p>Thank you for shopping with E-Store Haven. Order ID: <strong id="orderIdText">#ESH-98421</strong></p>
+      <div class="order-summary-card">
+        <p>🚚 Expected Delivery within 3-5 Business Days.</p>
+        <p>📱 Order tracking updates sent to your mobile & email.</p>
+      </div>
+      <button class="submit-btn" id="continueShoppingBtn">Continue Shopping</button>
+    </div>
+  </div>
+
+  <!-- Account / Profile Drawer -->
+  <div class="drawer-overlay hidden" id="profileOverlay">
+    <div class="cart-drawer">
+      <div class="drawer-header">
+        <h3>User Profile</h3>
+        <button class="close-modal-btn" id="closeProfileBtn">&times;</button>
+      </div>
+      <div class="drawer-body" id="profileBody">
+        <div class="profile-card">
+          <div class="profile-avatar" id="profileAvatar">U</div>
+          <h4 id="profileName">User Name</h4>
+          <p id="profileEmail">user@example.com</p>
+          <span class="badge badge-success">Verified Reseller Member</span>
+        </div>
+
+        <div class="profile-section">
+          <h5>Order History</h5>
+          <div id="orderHistoryList">
+            <p class="empty-orders">No past orders yet.</p>
+          </div>
+        </div>
+
+        <button class="logout-btn" id="logoutBtn">Logout Account</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notification Toast -->
+  <div class="toast hidden" id="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
